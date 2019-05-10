@@ -7,20 +7,26 @@
   background-color: #dc0a2d;
 }
 .poke-header-left {
-  height: 100px;
+  height: 90px;
   position: relative;
 }
 .poke-header-middle {
   border-radius: 0px 00px 50px 0px;
+  /* transform: skew(-15deg); */
+  text-align: center;
+}
+.pokedex-logo {
+  width: 50%;
+  height: 50%;
 }
 .poke-header-right {
-  height: 50px;
+  height: 40px;
 }
 .poke-header-volumen {
   position: absolute;
   background-color: #26aafc;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   left: 40%;
   top: 20%;
@@ -55,10 +61,11 @@
   display: flex;
 }
 .light {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border: 1px black solid;
   border-radius: 50%;
+  margin: 5px;
 }
 .red-light {
   background-color: #d20326;
