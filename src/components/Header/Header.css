@@ -1,0 +1,71 @@
+.poke-header {
+  display: flex;
+  justify-content: stretch;
+}
+.poke-part {
+  width: 33.33vw;
+  background-color: #dc0a2d;
+}
+.poke-header-left {
+  height: 100px;
+  position: relative;
+}
+.poke-header-middle {
+  border-radius: 0px 00px 50px 0px;
+}
+.poke-header-right {
+  height: 50px;
+}
+.poke-header-volumen {
+  position: absolute;
+  background-color: #26aafc;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  left: 40%;
+  top: 20%;
+  border: 5px solid #dbe6df;
+}
+
+.poke-header-volumen-outer {
+  position: absolute;
+  background-color: #196a9f;
+  width: 40%;
+  border-radius: 50%;
+  height: 40%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.poke-header-volumen-inner {
+  position: absolute;
+  background-color: #a3daf9;
+  width: 30%;
+  border-radius: 50%;
+  height: 30%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.lights-container {
+  display: flex;
+}
+.light {
+  width: 10px;
+  height: 10px;
+  border: 1px black solid;
+  border-radius: 50%;
+}
+.red-light {
+  background-color: #d20326;
+}
+.yellow-light {
+  background-color: #fdf271;
+}
+.green-light {
+  background-color: #2f733d;
+}
