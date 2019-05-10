@@ -11,7 +11,26 @@ var P = new Pokedex();
 function App(props) {
   const [searchString, changeSearchString] = useState("");
   const [pokemons, setPokemons] = useState([]);
-  useEffect(() => {});
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    async function getPokemons() {
+      const interval = {
+        limit: 10,
+        offset: 0
+      };
+      try {
+        const response = await P.getPokemonsList(interval);
+        console.log(response.results);
+
+        setPokemons(response.results);
+        setIsLoaded(true);
+      } catch (error) {
+        console.error("Error ocurred getting initial pokemons: ", error);
+      }
+    }
+    getPokemons();
+  });
   async function onSubmit(e) {
     e.preventDefault();
     try {
@@ -21,6 +40,7 @@ function App(props) {
       console.log("There was an ERROR: ", error);
     }
   }
+
   return (
     <React.Fragment>
       <Header />
@@ -29,7 +49,11 @@ function App(props) {
         searchString={searchString}
         onSubmit={onSubmit}
       />
-      <PokemonList searchString={searchString} />
+      {isLoaded ? (
+        <PokemonList searchString={searchString} pokemons={pokemons} />
+      ) : (
+        "loading..."
+      )}
     </React.Fragment>
   );
 }
