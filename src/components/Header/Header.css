@@ -1,6 +1,8 @@
 .poke-header {
   display: flex;
   justify-content: stretch;
+  /* background-image: url("../../assets/pokedex-logo.png");
+  background-size: cover; */
 }
 .poke-part {
   width: 33.33vw;
