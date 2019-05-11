@@ -15,22 +15,29 @@ function App(props) {
 
   useEffect(() => {
     async function getPokemons() {
-      const interval = {
-        limit: 10,
-        offset: 0
-      };
       try {
-        const response = await P.getPokemonsList(interval);
-        console.log(response.results);
+        const response = await P.getPokemonByName([
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]);
+        console.log(response);
 
-        setPokemons(response.results);
+        if (!pokemons.length) setPokemons(response);
         setIsLoaded(true);
       } catch (error) {
         console.error("Error ocurred getting initial pokemons: ", error);
       }
     }
     getPokemons();
-  });
+  }, [pokemons]);
   async function onSubmit(e) {
     e.preventDefault();
     try {

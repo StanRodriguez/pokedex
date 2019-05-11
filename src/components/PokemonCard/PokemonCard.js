@@ -1,11 +1,19 @@
 import React from "react";
-export default function PokemonCard({ name, url }) {
-  //   console.log(props);
+import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
+import "./PokemonCard.css";
+export default function PokemonCard({ pokemon }) {
+  const { name, sprites, id } = pokemon;
   return (
-    <div className="pokemon-card">
-      <h1>name: {name}</h1>
-
-      <h1>url: {url} </h1>
-    </div>
+    <Card outline color="secondary" className="pokemon-card">
+      <CardImg src={sprites.front_default} alt={name} />
+      <CardBody>
+        <CardTitle>
+          <h4> {name}</h4>
+        </CardTitle>
+        {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
+        <input type="hidden" value={id} />
+        <CardText />
+      </CardBody>
+    </Card>
   );
 }
