@@ -7,10 +7,11 @@ import {
   InputGroup,
   InputGroupAddon
 } from "reactstrap";
+import "./Search.css";
 export default function Search(props) {
   return (
-    <Form inline onSubmit={props.onSubmit}>
-      <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+    <Form onSubmit={props.onSubmit} className="m-2">
+      <FormGroup className="m-auto col col-md-8 col-xl-4">
         <InputGroup>
           <Input
             type="text"
