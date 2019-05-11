@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
+import { Link } from "react-router-dom";
 import "./PokemonCard.css";
 export default function PokemonCard({ pokemon }) {
   const { name, sprites, id } = pokemon;
@@ -9,7 +10,9 @@ export default function PokemonCard({ pokemon }) {
       color="secondary"
       className="m-2 col-10 col-md-5 col-xl-3 pokemon-card"
     >
-      <CardImg src={sprites.front_default} alt={name} />
+      <Link to={`/${id}`}>
+        <CardImg src={sprites.front_default} alt={name} />
+      </Link>
       <CardBody>
         <CardTitle>
           <h4> {name}</h4>
