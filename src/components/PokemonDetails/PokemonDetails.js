@@ -19,9 +19,11 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
 
   const [modal, setModal] = useState(false);
   const [details, setDetails] = useState({});
+
   useEffect(() => {
-    getPokemonDetails();
+    total === 1 && getPokemonDetails();
   }, []);
+
   function getDescription(descriptions, language) {
     return descriptions.filter(
       description => description.language.name === language
@@ -106,7 +108,9 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
         {buttonLabel}
       </Button>
       <Modal size="lg" toggle={() => setModal(!modal)} isOpen={modal}>
-        <ModalHeader toggle={() => setModal(!modal)}>{name}</ModalHeader>
+        <ModalHeader toggle={() => setModal(!modal)}>
+          #{id}: {name}
+        </ModalHeader>
         <ModalBody>
           <Slideshow
             items={Object.values(sprites)
