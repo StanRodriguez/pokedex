@@ -11,7 +11,7 @@ export default function PokemonCard({ pokemon }) {
       color="secondary"
       className="m-2 col-10 col-md-5 col-xl-3 pokemon-card"
     >
-      <Link to={`/${id}`}>
+      <Link to={`/pokemon/${id}`}>
         <CardImg src={sprites.front_default} alt={name} />
       </Link>
       <CardBody>

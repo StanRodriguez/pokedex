@@ -15,7 +15,14 @@ function PokemonApp(props) {
     try {
       const P = new Pokedex();
       const response = await P.getPokemonByName(params);
-      setPokemons(response);
+      const pokemons = response.map(pokemon => ({
+        id: pokemon.id,
+        name: pokemon.name,
+        sprites: pokemon.sprites,
+        species: pokemon.species,
+        stats: pokemon.stats
+      }));
+      setPokemons(pokemons);
       setIsLoaded(true);
     } catch (error) {
       console.error("Error ocurred getting initial pokemons: ", error);

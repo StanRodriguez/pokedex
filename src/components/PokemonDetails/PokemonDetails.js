@@ -8,11 +8,13 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
 
   const [modal, setModal] = useState(false);
   const [details, setDetails] = useState({});
+
   function getDescription(descriptions, language) {
     return descriptions.filter(
       description => description.language.name === language
     )[0].flavor_text;
   }
+
   function getEvolutionChain(evolves_to, cleanedChain = [], count = 1) {
     if (!evolves_to) return cleanedChain;
     else {
@@ -27,6 +29,20 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
       );
     }
   }
+  function formatEvolutionChain(evolutionChain) {
+    return evolutionChain.map((evo, i, arr) => (
+      <span key={evo.url}>
+        <a href={evo.url}>{evo.name}</a>
+        {i !== arr.length - 1 ? (
+          <span role="img" aria-label="right">
+            {"  "}▶{"  "}
+          </span>
+        ) : (
+          ""
+        )}
+      </span>
+    ));
+  }
   async function getPokemonDetails() {
     const P = new Pokedex();
     try {
@@ -35,12 +51,11 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
       const pokeEvolutionChain = await P.resource([
         pokeSpecies[0].evolution_chain.url
       ]);
-      // console.log(pokeSpecies, pokeEvolutionChain[0].chain);
-      console.log(getEvolutionChain(pokeEvolutionChain[0].chain));
 
       setDetails({
         description: getDescription(pokeSpecies[0].flavor_text_entries, "en"),
-        evolutionChain: getEvolutionChain(pokeEvolutionChain[0].chain)
+        evolutionChain: getEvolutionChain(pokeEvolutionChain[0].chain),
+        habitat: pokeSpecies[0].habitat ? pokeSpecies[0].habitat.name : "N/A"
       });
       setModal(!modal);
     } catch (error) {
@@ -62,20 +77,9 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
           />
 
           {details.description}
-          {details.evolutionChain
-            ? details.evolutionChain.map((evo, i, arr) => (
-                <span key={evo.url}>
-                  <a href={evo.url}>{evo.name}</a>
-                  {i !== arr.length - 1 ? (
-                    <span role="img" aria-label="right">
-                      {"  "}▶{"  "}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </span>
-              ))
-            : ""}
+          {details.evolutionChain &&
+            formatEvolutionChain(details.evolutionChain)}
+          {details.habitat}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={() => setModal(!modal)}>

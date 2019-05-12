@@ -9,7 +9,7 @@ function App(props) {
     <React.Fragment>
       <Switch>
         <Route path="/" exact component={PokemonApp} />
-        <Route path="/:id" component={PokemonApp} />
+        <Route path="/pokemon/:id" component={PokemonApp} />
       </Switch>
     </React.Fragment>
   );
