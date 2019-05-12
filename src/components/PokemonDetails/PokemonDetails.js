@@ -16,6 +16,7 @@ import Slideshow from "../Slideshow/Slideshow";
 const Pokedex = require("pokedex-promise-v2");
 
 export default function PokemonDetails({ buttonLabel, pokemon, total }) {
+  const speech = new Speech();
   const { id, name, sprites, stats, species } = pokemon;
 
   const [modal, setModal] = useState(false);
@@ -81,7 +82,6 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
   }
   function tts(text) {
     try {
-      const speech = new Speech();
       speech
         .init()
 
@@ -90,6 +90,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
         });
       speech
         .speak({
+          queue: false,
           text
         })
         .then(() => {
@@ -131,7 +132,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <Button color="danger" onClick={getPokemonDetails}>
         {buttonLabel}
       </Button>
@@ -145,7 +146,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
               .filter(item => item !== null)
               .reverse()}
           />
-          {modal && tts(details.description)}
+          {modal ? tts(details.description) : speech.cancel()}
           <p>{details.description}</p>
           <p>
             <span className="h6">Evolution Chain: </span>
@@ -178,6 +179,6 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
           </Button> */}
         </ModalFooter>
       </Modal>
-    </div>
+    </React.Fragment>
   );
 }

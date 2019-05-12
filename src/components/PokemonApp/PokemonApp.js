@@ -39,6 +39,7 @@ function PokemonApp(props) {
     e.preventDefault();
     getPokemons([searchString]);
   }
+
   return (
     <div className="container-fluid">
       <Header />
