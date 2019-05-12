@@ -1,18 +1,16 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-export default function PokemonDetails(props) {
+
+export default function PokemonDetails({ buttonLabel, pokemon }) {
+  const [modal, setModal] = useState(false);
+
   return (
     <div>
-      <Button color="danger" onClick={this.toggle}>
-        {this.props.buttonLabel}
+      <Button color="danger" onClick={() => setModal(!modal)}>
+        {buttonLabel}
       </Button>
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        className={this.props.className}
-      >
-        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+      <Modal toggle={() => setModal(!modal)} isOpen={modal}>
+        <ModalHeader toggle={() => setModal(!modal)} />
         <ModalBody>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -23,10 +21,10 @@ export default function PokemonDetails(props) {
           culpa qui officia deserunt mollit anim id est laborum.
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={this.toggle}>
+          <Button color="primary" onClick={() => setModal(!modal)}>
             Do Something
           </Button>{" "}
-          <Button color="secondary" onClick={this.toggle}>
+          <Button color="secondary" onClick={() => setModal(!modal)}>
             Cancel
           </Button>
         </ModalFooter>

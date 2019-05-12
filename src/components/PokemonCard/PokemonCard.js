@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./PokemonCard.css";
+import PokemonDetails from "../PokemonDetails/PokemonDetails";
 export default function PokemonCard({ pokemon }) {
   const { name, sprites, id } = pokemon;
   return (
@@ -18,6 +19,7 @@ export default function PokemonCard({ pokemon }) {
           <h4> {name}</h4>
         </CardTitle>
         {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
+        <PokemonDetails pokemon={pokemon} buttonLabel="See details" />
         <input type="hidden" value={id} />
         <CardText />
       </CardBody>
