@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import PokemonList from "../PokemonList/PokemonList";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./PokemonApp.css";
 
 const Pokedex = require("pokedex-promise-v2");
@@ -12,7 +11,7 @@ function PokemonApp(props) {
   const [pokemons, setPokemons] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  async function getPokemons(params = [1]) {
+  async function getPokemons(params = [115]) {
     try {
       const P = new Pokedex();
       const response = await P.getPokemonByName(params);
