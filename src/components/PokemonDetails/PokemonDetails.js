@@ -21,7 +21,7 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
         pokeSpecies[0].evolution_chain.url
       ]);
       console.log(pokeSpecies, pokeEvolutionChain);
-      // getEvolutionChain(response[1]);
+      getEvolutionChain(...pokeEvolutionChain);
       setDetails({
         description: pokeSpecies[0].flavor_text_entries[1].flavor_text
       });
