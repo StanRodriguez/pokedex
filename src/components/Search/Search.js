@@ -8,17 +8,17 @@ import {
   InputGroupAddon
 } from "reactstrap";
 import "./Search.css";
-export default function Search(props) {
+export default function Search({ handleSubmit, handleChange, searchString }) {
   return (
-    <Form onSubmit={props.onSubmit} className="m-2">
+    <Form onSubmit={handleSubmit} className="m-2">
       <FormGroup className="m-auto col col-md-8 col-xl-4">
         <InputGroup>
           <Input
             type="text"
             name="search"
             placeholder="Search..."
-            onChange={e => props.onChange(e.target.value)}
-            value={props.searchString}
+            onChange={e => handleChange(e.target.value)}
+            value={searchString}
           />
           <InputGroupAddon addonType="append">
             <Button color="primary">Submit</Button>

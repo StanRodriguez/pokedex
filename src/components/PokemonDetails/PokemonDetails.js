@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Progress
+} from "reactstrap";
 import Slideshow from "../Slideshow/Slideshow";
 const Pokedex = require("pokedex-promise-v2");
 
-export default function PokemonDetails({ buttonLabel, pokemon }) {
-  const { name, sprites, species } = pokemon;
+export default function PokemonDetails({ buttonLabel, pokemon, isOpen }) {
+  const { name, sprites, stats, species } = pokemon;
 
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(isOpen);
   const [details, setDetails] = useState({});
 
   function getDescription(descriptions, language) {
@@ -62,12 +69,37 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
       console.error("An error has ocurred getting pokemon details: ", error);
     }
   }
+  function formatStats(stats) {
+    function getBarColor(number) {
+      if (number > 150) {
+        return "success";
+      } else if (number > 100) {
+        return "info";
+      } else if (number > 50) {
+        return "warning";
+      } else {
+        return "danger";
+      }
+    }
+    return stats.map((stat, i) => (
+      <React.Fragment key={i}>
+        <h6>{stat.stat.name}</h6>
+        <Progress
+          color={getBarColor(stat.base_stat)}
+          value={stat.base_stat}
+          max="200"
+        >
+          {stat.base_stat}
+        </Progress>
+      </React.Fragment>
+    ));
+  }
   return (
     <div>
       <Button color="danger" onClick={getPokemonDetails}>
         {buttonLabel}
       </Button>
-      <Modal toggle={() => setModal(!modal)} isOpen={modal}>
+      <Modal size="lg" toggle={() => setModal(!modal)} isOpen={modal}>
         <ModalHeader toggle={() => setModal(!modal)}>{name}</ModalHeader>
         <ModalBody>
           <Slideshow
@@ -75,11 +107,15 @@ export default function PokemonDetails({ buttonLabel, pokemon }) {
               .filter(item => item !== null)
               .reverse()}
           />
-
           {details.description}
-          {details.evolutionChain &&
-            formatEvolutionChain(details.evolutionChain)}
-          {details.habitat}
+          <h6>
+            Evolution Chain:
+            {details.evolutionChain &&
+              formatEvolutionChain(details.evolutionChain)}
+          </h6>
+
+          <h6>Habitat: {details.habitat}</h6>
+          {formatStats(stats)}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={() => setModal(!modal)}>

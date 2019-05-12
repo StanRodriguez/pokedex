@@ -7,11 +7,11 @@ import "./PokemonApp.css";
 const Pokedex = require("pokedex-promise-v2");
 
 function PokemonApp(props) {
-  const [searchString, changeSearchString] = useState("");
+  const [searchString, setSearchString] = useState("");
   const [pokemons, setPokemons] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  async function getPokemons(params = [115]) {
+  async function getPokemons(params = [115, 116]) {
     try {
       const P = new Pokedex();
       const response = await P.getPokemonByName(params);
@@ -35,23 +35,17 @@ function PokemonApp(props) {
       : getPokemons();
   }, [props.match.params.id]);
 
-  async function onSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const P = new Pokedex();
-      const response = await P.getPokemonByName(searchString);
-      console.log(response);
-    } catch (error) {
-      console.log("There was an ERROR: ", error);
-    }
+    getPokemons([searchString]);
   }
   return (
     <React.Fragment>
       <Header />
       <Search
-        onChange={changeSearchString}
+        handleChange={setSearchString}
         searchString={searchString}
-        onSubmit={onSubmit}
+        handleSubmit={handleSubmit}
       />
       {isLoaded ? (
         <PokemonList searchString={searchString} pokemons={pokemons} />

@@ -4,8 +4,12 @@ import "./PokemonList.css";
 export default function PokemonList({ pokemons }) {
   return (
     <div className="pokemon-list">
-      {pokemons.map(pokemon => (
-        <PokemonCard key={pokemon.id} pokemon={{ ...pokemon }} />
+      {pokemons.map((pokemon, i, pokemons) => (
+        <PokemonCard
+          total={pokemons.length}
+          key={pokemon.id}
+          pokemon={{ ...pokemon }}
+        />
       ))}
     </div>
   );
