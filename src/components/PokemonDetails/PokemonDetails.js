@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Progress
+  Progress,
+  Pagination,
+  PaginationItem,
+  PaginationLink
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import Slideshow from "../Slideshow/Slideshow";
 const Pokedex = require("pokedex-promise-v2");
 
-export default function PokemonDetails({ buttonLabel, pokemon, isOpen }) {
-  const { name, sprites, stats, species } = pokemon;
+export default function PokemonDetails({ buttonLabel, pokemon, total }) {
+  const { id, name, sprites, stats, species } = pokemon;
 
-  const [modal, setModal] = useState(isOpen);
+  const [modal, setModal] = useState(false);
   const [details, setDetails] = useState({});
-
+  useEffect(() => {
+    getPokemonDetails();
+  }, []);
   function getDescription(descriptions, language) {
     return descriptions.filter(
       description => description.language.name === language
@@ -39,7 +45,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, isOpen }) {
   function formatEvolutionChain(evolutionChain) {
     return evolutionChain.map((evo, i, arr) => (
       <span key={evo.url}>
-        <a href={evo.url}>{evo.name}</a>
+        <Link to={"/pokemon" + evo.url}>{evo.name}</Link>
         {i !== arr.length - 1 ? (
           <span role="img" aria-label="right">
             {"  "}▶{"  "}
@@ -118,12 +124,24 @@ export default function PokemonDetails({ buttonLabel, pokemon, isOpen }) {
           {formatStats(stats)}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => setModal(!modal)}>
+          <Pagination aria-label="Page navigation example">
+            <PaginationItem>
+              <Link to={`/pokemon/${id - 1}`}>
+                <PaginationLink previous />
+              </Link>
+            </PaginationItem>
+            <PaginationItem>
+              <Link to={`/pokemon/${id + 1}`}>
+                <PaginationLink next />
+              </Link>
+            </PaginationItem>
+          </Pagination>
+          {/* <Button color="primary" onClick={() => setModal(!modal)}>
             Do Something
           </Button>
           <Button color="secondary" onClick={() => setModal(!modal)}>
             Cancel
-          </Button>
+          </Button> */}
         </ModalFooter>
       </Modal>
     </div>

@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Search from "../Search/Search";
 import PokemonList from "../PokemonList/PokemonList";
 import "./PokemonApp.css";
+import Footer from "../Footer/Footer";
 
 const Pokedex = require("pokedex-promise-v2");
 
@@ -11,7 +12,7 @@ function PokemonApp(props) {
   const [pokemons, setPokemons] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  async function getPokemons(params = [115, 116]) {
+  async function getPokemons(params = [1, 2, 3, 4, 5, 6]) {
     try {
       const P = new Pokedex();
       const response = await P.getPokemonByName(params);
@@ -48,7 +49,15 @@ function PokemonApp(props) {
         handleSubmit={handleSubmit}
       />
       {isLoaded ? (
-        <PokemonList searchString={searchString} pokemons={pokemons} />
+        <React.Fragment>
+          <PokemonList searchString={searchString} pokemons={pokemons} />
+          <Footer
+            total={pokemons.length}
+            first={pokemons[0].id}
+            last={pokemons[pokemons.length - 1].id}
+            getPokemons={getPokemons}
+          />
+        </React.Fragment>
       ) : (
         "loading..."
       )}

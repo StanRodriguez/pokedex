@@ -16,11 +16,13 @@ export default function PokemonCard({ pokemon, total }) {
       </Link>
       <CardBody>
         <CardTitle>
-          <h4> {name}</h4>
+          <h4>
+            #{id}: {name}
+          </h4>
         </CardTitle>
         {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
         <PokemonDetails
-          isOpen={total === 1 ? true : false}
+          total={total}
           pokemon={pokemon}
           buttonLabel="See details"
         />
