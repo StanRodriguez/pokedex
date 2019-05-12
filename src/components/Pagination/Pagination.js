@@ -1,9 +1,9 @@
 import React from "react";
 import { ButtonGroup, Button } from "reactstrap";
-import "./Footer.css";
-export default function Footer({ first, last, total, getPokemons }) {
+import "./Pagination.css";
+export default function Pagination({ first, last, total, getPokemons }) {
   const pokemonsTotal = 807;
-  const limit = 5;
+  const limit = 6;
   // console.log(first, last, total, getPokemons);
   function handleNext() {
     const range = [];
@@ -12,7 +12,7 @@ export default function Footer({ first, last, total, getPokemons }) {
         range.push(i);
       }
       const length = range.length;
-      for (let i = 1; i <= limit - (length - 1); i++) {
+      for (let i = 1; i <= limit - length; i++) {
         range.push(i);
       }
     } else {
@@ -38,8 +38,12 @@ export default function Footer({ first, last, total, getPokemons }) {
   return (
     <footer>
       <ButtonGroup>
-        <Button onClick={handlePrevious}>Prev</Button>
-        <Button onClick={handleNext}>Next</Button>
+        <Button outline color="danger" onClick={handlePrevious}>
+          Prev
+        </Button>
+        <Button outline color="danger" onClick={handleNext}>
+          Next
+        </Button>
       </ButtonGroup>
     </footer>
   );

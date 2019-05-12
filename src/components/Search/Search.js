@@ -21,7 +21,7 @@ export default function Search({ handleSubmit, handleChange, searchString }) {
             value={searchString}
           />
           <InputGroupAddon addonType="append">
-            <Button color="primary">Submit</Button>
+            <Button color="danger">Submit</Button>
           </InputGroupAddon>
         </InputGroup>
       </FormGroup>

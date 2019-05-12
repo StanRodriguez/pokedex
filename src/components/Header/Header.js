@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 import pokedexLogo from "../../assets/pokedex-logo.png";
 function Header(props) {
   return (
@@ -18,7 +19,13 @@ function Header(props) {
             <div className="light yellow-light" />
             <div className="light green-light" />
           </div>
-          <img className="pokedex-logo" src={pokedexLogo} alt="pokedex-logo" />
+          <Link to="/">
+            <img
+              className="pokedex-logo"
+              src={pokedexLogo}
+              alt="pokedex-logo"
+            />
+          </Link>
         </div>
         <div className="poke-part poke-header-right" />
       </div>

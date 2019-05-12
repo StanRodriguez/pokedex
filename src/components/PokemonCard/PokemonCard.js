@@ -1,5 +1,12 @@
 import React from "react";
-import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
+import {
+  Card,
+  CardImg,
+  CardTitle,
+  CardBody,
+  CardText,
+  CardFooter
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import "./PokemonCard.css";
 import PokemonDetails from "../PokemonDetails/PokemonDetails";
@@ -21,12 +28,13 @@ export default function PokemonCard({ pokemon, total }) {
           </h4>
         </CardTitle>
         {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
-        <PokemonDetails
-          total={total}
-          pokemon={pokemon}
-          buttonLabel="See details"
-        />
-        <input type="hidden" value={id} />
+        <CardFooter className="card-footer">
+          <PokemonDetails
+            total={total}
+            pokemon={pokemon}
+            buttonLabel="See details"
+          />
+        </CardFooter>
         <CardText />
       </CardBody>
     </Card>

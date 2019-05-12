@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Search from "../Search/Search";
 import PokemonList from "../PokemonList/PokemonList";
 import "./PokemonApp.css";
-import Footer from "../Footer/Footer";
+import Pagination from "../Pagination/Pagination";
 
 const Pokedex = require("pokedex-promise-v2");
 
@@ -41,7 +41,7 @@ function PokemonApp(props) {
     getPokemons([searchString]);
   }
   return (
-    <React.Fragment>
+    <div className="container-fluid">
       <Header />
       <Search
         handleChange={setSearchString}
@@ -50,18 +50,20 @@ function PokemonApp(props) {
       />
       {isLoaded ? (
         <React.Fragment>
+          {pokemons.length > 1 && (
+            <Pagination
+              total={pokemons.length}
+              first={pokemons[0].id}
+              last={pokemons[pokemons.length - 1].id}
+              getPokemons={getPokemons}
+            />
+          )}
           <PokemonList searchString={searchString} pokemons={pokemons} />
-          <Footer
-            total={pokemons.length}
-            first={pokemons[0].id}
-            last={pokemons[pokemons.length - 1].id}
-            getPokemons={getPokemons}
-          />
         </React.Fragment>
       ) : (
         "loading..."
       )}
-    </React.Fragment>
+    </div>
   );
 }
 
