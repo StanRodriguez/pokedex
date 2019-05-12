@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Speech from "speak-tts";
 import {
   Button,
   Modal,
@@ -72,10 +73,36 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
         evolutionChain: getEvolutionChain(pokeEvolutionChain[0].chain),
         habitat: pokeSpecies[0].habitat ? pokeSpecies[0].habitat.name : "N/A"
       });
+
       setModal(!modal);
     } catch (error) {
       console.error("An error has ocurred getting pokemon details: ", error);
     }
+  }
+  function tts(text) {
+    try {
+      const speech = new Speech();
+      speech
+        .init()
+
+        .catch(e => {
+          console.error("An error occured while initializing : ", e);
+        });
+      speech
+        .speak({
+          text
+        })
+        .then(() => {
+          console.log("Success !");
+          return "";
+        })
+        .catch(e => {
+          console.error("An error occurred trying to speak:", e);
+        });
+    } catch (error) {
+      console.error("Error instanciando:", error);
+    }
+    // will throw an exception if not browser supported
   }
   function formatStats(stats) {
     function getBarColor(number) {
@@ -102,6 +129,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
       </React.Fragment>
     ));
   }
+
   return (
     <div>
       <Button color="danger" onClick={getPokemonDetails}>
@@ -117,7 +145,8 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
               .filter(item => item !== null)
               .reverse()}
           />
-          <p> {details.description}</p>
+          {modal && tts(details.description)}
+          <p>{details.description}</p>
           <p>
             <span className="h6">Evolution Chain: </span>
             {details.evolutionChain &&
@@ -126,7 +155,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
           <p>
             <span className="h6"> Habitat:</span> {details.habitat}
           </p>
-          <p>{formatStats(stats)}</p>
+          {formatStats(stats)}
         </ModalBody>
         <ModalFooter>
           <Pagination aria-label="Page navigation example">
