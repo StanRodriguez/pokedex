@@ -1,29 +1,55 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import Slideshow from "../Slideshow/Slideshow";
+const Pokedex = require("pokedex-promise-v2");
 
 export default function PokemonDetails({ buttonLabel, pokemon }) {
+  const { id, name, sprites, species } = pokemon;
   const [modal, setModal] = useState(false);
+  const [details, setDetails] = useState({});
 
+  function getEvolutionChain({ chain }) {
+    const cleanedChain = [];
+    console.log(chain.evolves_to);
+  }
+  async function getPokemonDetails() {
+    const P = new Pokedex();
+    try {
+      const pokeSpecies = await P.resource([species.url]);
+
+      const pokeEvolutionChain = await P.resource([
+        pokeSpecies[0].evolution_chain.url
+      ]);
+      console.log(pokeSpecies, pokeEvolutionChain);
+      // getEvolutionChain(response[1]);
+      setDetails({
+        description: pokeSpecies[0].flavor_text_entries[1].flavor_text
+      });
+      setModal(!modal);
+    } catch (error) {
+      console.error("An error has ocurred getting pokemon details: ", error);
+    }
+  }
   return (
     <div>
-      <Button color="danger" onClick={() => setModal(!modal)}>
+      <Button color="danger" onClick={getPokemonDetails}>
         {buttonLabel}
       </Button>
       <Modal toggle={() => setModal(!modal)} isOpen={modal}>
-        <ModalHeader toggle={() => setModal(!modal)} />
+        <ModalHeader toggle={() => setModal(!modal)}>{name}</ModalHeader>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          <Slideshow
+            items={Object.values(sprites)
+              .filter(item => item !== null)
+              .reverse()}
+          />
+
+          {details.description}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={() => setModal(!modal)}>
             Do Something
-          </Button>{" "}
+          </Button>
           <Button color="secondary" onClick={() => setModal(!modal)}>
             Cancel
           </Button>
