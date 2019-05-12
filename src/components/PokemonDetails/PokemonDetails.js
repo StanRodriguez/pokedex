@@ -117,15 +117,16 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
               .filter(item => item !== null)
               .reverse()}
           />
-          {details.description}
-          <h6>
-            Evolution Chain:
+          <p> {details.description}</p>
+          <p>
+            <span className="h6">Evolution Chain: </span>
             {details.evolutionChain &&
               formatEvolutionChain(details.evolutionChain)}
-          </h6>
-
-          <h6>Habitat: {details.habitat}</h6>
-          {formatStats(stats)}
+          </p>
+          <p>
+            <span className="h6"> Habitat:</span> {details.habitat}
+          </p>
+          <p>{formatStats(stats)}</p>
         </ModalBody>
         <ModalFooter>
           <Pagination aria-label="Page navigation example">

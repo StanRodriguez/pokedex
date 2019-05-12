@@ -11,6 +11,11 @@ function PokemonApp(props) {
   const [searchString, setSearchString] = useState("");
   const [pokemons, setPokemons] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    props.match.params.id
+      ? getPokemons([props.match.params.id])
+      : getPokemons();
+  }, [props.match.params.id]);
 
   async function getPokemons(params = [1, 2, 3, 4, 5, 6]) {
     try {
@@ -18,7 +23,7 @@ function PokemonApp(props) {
       const response = await P.getPokemonByName(params);
       const pokemons = response.map(pokemon => ({
         id: pokemon.id,
-        name: pokemon.name,
+        name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1),
         sprites: pokemon.sprites,
         species: pokemon.species,
         stats: pokemon.stats
@@ -29,12 +34,6 @@ function PokemonApp(props) {
       console.error("Error ocurred getting initial pokemons: ", error);
     }
   }
-
-  useEffect(() => {
-    props.match.params.id
-      ? getPokemons([props.match.params.id])
-      : getPokemons();
-  }, [props.match.params.id]);
 
   async function handleSubmit(e) {
     e.preventDefault();
