@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import pokedexLogo from "../../assets/pokedex-logo.png";
+// import pokedexLogo from "../../assets/pokedex-logo.png";
 function Header(props) {
   return (
     <header>
@@ -19,15 +19,11 @@ function Header(props) {
             <div className="light yellow-light" />
             <div className="light green-light" />
           </div>
-          <Link to="/">
-            <img
-              className="pokedex-logo"
-              src={pokedexLogo}
-              alt="pokedex-logo"
-            />
-          </Link>
         </div>
         <div className="poke-part poke-header-right" />
+        <Link to="/" className="header-title-link">
+          <h1 className="header-title">Pokédex</h1>
+        </Link>
       </div>
     </header>
   );

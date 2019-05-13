@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "PokemonSolid";
+  src: url(./../../assets/fonts/PokemonSolid.ttf) format("truetype");
+}
+.header-title {
+  font-family: "PokemonSolid", Arial, Helvetica, sans-serif;
+  color: #f8c505;
+  text-shadow: -3px 0 #316ab2, 0 3px #316ab2, 3px 0 #316ab2, 0 -3px #316ab2;
+}
+.header-title-link {
+  text-decoration: none;
+}
+.header-title-link:hover {
+  text-decoration: none;
+}
 .poke-header {
   display: flex;
   justify-content: stretch;

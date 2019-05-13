@@ -36,7 +36,7 @@ export default function Pagination({ first, last, total, getPokemons }) {
     getPokemons(range);
   }
   return (
-    <footer>
+    <div className="navigation">
       <ButtonGroup>
         <Button outline color="danger" onClick={handlePrevious}>
           Prev
@@ -45,6 +45,6 @@ export default function Pagination({ first, last, total, getPokemons }) {
           Next
         </Button>
       </ButtonGroup>
-    </footer>
+    </div>
   );
 }

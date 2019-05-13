@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Search from "../Search/Search";
 import PokemonList from "../PokemonList/PokemonList";
 import "./PokemonApp.css";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../Navigation/Navigation";
 
 const Pokedex = require("pokedex-promise-v2");
 
@@ -41,7 +41,7 @@ function PokemonApp(props) {
   }
 
   return (
-    <div className="container-fluid">
+    <main className="container-fluid">
       <Header />
       <Search
         handleChange={setSearchString}
@@ -63,7 +63,7 @@ function PokemonApp(props) {
       ) : (
         "loading..."
       )}
-    </div>
+    </main>
   );
 }
 
