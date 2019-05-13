@@ -16,10 +16,10 @@ export default function PokemonCard({ pokemon, total }) {
     <Card
       outline
       color="secondary"
-      className="m-2 col-10 col-md-5 col-xl-3 pokemon-card"
+      className="m-2 col-10 col-md-5 col-xl-3 justify-content-center align-items-center pokemon-card"
     >
       <Link to={`/pokemon/${id}`}>
-        <CardImg src={sprites.front_default} alt={name} />
+        <CardImg bottom src={sprites.front_default} alt={name} />
       </Link>
       <CardBody>
         <CardTitle>
@@ -35,7 +35,6 @@ export default function PokemonCard({ pokemon, total }) {
             buttonLabel="See details"
           />
         </CardFooter>
-        <CardText />
       </CardBody>
     </Card>
   );
