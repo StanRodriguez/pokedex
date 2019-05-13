@@ -4,7 +4,7 @@ import Search from "../Search/Search";
 import PokemonList from "../PokemonList/PokemonList";
 import "./PokemonApp.css";
 import Pagination from "../Navigation/Navigation";
-
+import loadingImage from "../../assets/loading.gif";
 const Pokedex = require("pokedex-promise-v2");
 
 function PokemonApp(props) {
@@ -61,7 +61,7 @@ function PokemonApp(props) {
           <PokemonList searchString={searchString} pokemons={pokemons} />
         </React.Fragment>
       ) : (
-        "loading..."
+        <img src={loadingImage} alt="Loading" />
       )}
     </main>
   );
