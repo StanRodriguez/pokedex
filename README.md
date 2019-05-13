@@ -1,4 +1,34 @@
-This project was bootstrapped with [Create React SSR App](https://github.com/trustworktech/create-react-ssr-app).
+#Pokédex
+This app allows you to look for information of any pokemon using the [PokéAPI](https://pokeapi.co/).
+
+##Features
+
+- Server-side rendering (SSR) using [Create React SSR app](https://trustworktech.github.io/create-react-ssr-app/) package.
+- UI designed using [Reactstrap](https://reactstrap.github.io/).
+- Responsive.
+- Text-To-Speech capable using [speak-tts](https://www.npmjs.com/package/speak-tts).
+- Searching by name or ID.
+- Navigation in groups (on homepage) or individual (on modal).
+- Pokemon stats using progress bar.
+- Slideshow showing pokemons' different images.
+- URL parameters can be used to access to a particular pokemon with the route `/pokemon/<id>` or `/pokemon/<name>`.
+
+**Note**: to fully see all the features, it's recommended to run a **production build**. (check the **Available Scripts** section for more info).
+
+##How to use it
+On the homepage, use the buttons **Prev** and **Next** to navigate through groups of pokemons. Also, the name or the ID of the pokemon can be typed in the **search box** and then press **enter**. If the pokemon is found, it is showed.
+Press **See details** button to see more information. A modal will pop up and the text-to-speech feature will start reading the pokemon description.
+The following details are available:
+
+- Pokemon name
+- ID or number
+- Images
+- Description
+- Evolution chain
+- Habitat(s)
+- Stats
+
+At the bottom of the modal, the previous or next pokemon can be accessed using the **<** and **>** buttons.
 
 ## Available Scripts
 
@@ -15,7 +45,6 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://trustworktech.github.io/create-react-ssr-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -23,22 +52,4 @@ Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode (both for the server and the client) and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://trustworktech.github.io/create-react-ssr-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React SSR App documentation](https://trustworktech.github.io/create-react-ssr-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The build can be run using `node build` command.
