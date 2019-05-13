@@ -6,7 +6,7 @@ This app allows you to look for information of any pokemon using the [PokéAPI](
 
 - Server-side rendering (SSR) using [Create React SSR app](https://trustworktech.github.io/create-react-ssr-app/) package.
 - UI designed using [Reactstrap](https://reactstrap.github.io/).
-- Responsive.
+- Responsive design.
 - Text-To-Speech capable using [speak-tts](https://www.npmjs.com/package/speak-tts).
 - Searching by name or ID.
 - Navigation in groups (on homepage) or individual (on modal).
