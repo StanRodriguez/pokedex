@@ -37,7 +37,7 @@ function PokemonApp(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    getPokemons([searchString]);
+    if (searchString) getPokemons([searchString.toLocaleLowerCase()]);
   }
 
   return (

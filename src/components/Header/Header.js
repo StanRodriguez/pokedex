@@ -20,7 +20,7 @@ function Header(props) {
             <div className="light green-light" />
           </div>
           <Link to="/" className="header-title-link">
-            <h1 className="header-title">Pokédex</h1>
+            <h2 className="header-title">Pokédex</h2>
           </Link>
         </div>
         <div className="poke-part poke-header-right" />
