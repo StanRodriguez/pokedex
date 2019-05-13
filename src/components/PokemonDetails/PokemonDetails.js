@@ -140,23 +140,27 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
         <ModalHeader toggle={() => setModal(!modal)}>
           #{id}: {name}
         </ModalHeader>
-        <ModalBody>
-          <Slideshow
-            items={Object.values(sprites)
-              .filter(item => item !== null)
-              .reverse()}
-          />
-          {modal ? tts(details.description) : speech.cancel()}
-          <p>{details.description}</p>
-          <p>
-            <span className="h6">Evolution Chain: </span>
-            {details.evolutionChain &&
-              formatEvolutionChain(details.evolutionChain)}
-          </p>
-          <p>
-            <span className="h6"> Habitat:</span> {details.habitat}
-          </p>
-          {formatStats(stats)}
+        <ModalBody className="row">
+          <div className="col-12 col-lg-6">
+            <Slideshow
+              items={Object.values(sprites)
+                .filter(item => item !== null)
+                .reverse()}
+            />
+            {modal ? tts(details.description) : speech.cancel()}
+            <p>{details.description}</p>
+          </div>
+          <div className="col-12 col-lg-6">
+            <p>
+              <span className="h6">Evolution Chain: </span>
+              {details.evolutionChain &&
+                formatEvolutionChain(details.evolutionChain)}
+            </p>
+            <p>
+              <span className="h6"> Habitat:</span> {details.habitat}
+            </p>
+            {formatStats(stats)}
+          </div>
         </ModalBody>
         <ModalFooter>
           <Pagination aria-label="Page navigation example">

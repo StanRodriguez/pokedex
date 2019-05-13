@@ -6,6 +6,8 @@
   font-family: "PokemonSolid", Arial, Helvetica, sans-serif;
   color: #f8c505;
   text-shadow: -3px 0 #316ab2, 0 3px #316ab2, 3px 0 #316ab2, 0 -3px #316ab2;
+  position: absolute;
+  right: 25px;
 }
 .header-title-link {
   text-decoration: none;
@@ -24,7 +26,7 @@
   background-color: #dc0a2d;
 }
 .poke-header-left {
-  height: 90px;
+  height: 100px;
   position: relative;
 }
 .poke-header-middle {
@@ -37,7 +39,8 @@
   height: 50%;
 }
 .poke-header-right {
-  height: 40px;
+  height: 50px;
+  position: relative;
 }
 .poke-header-volumen {
   position: absolute;

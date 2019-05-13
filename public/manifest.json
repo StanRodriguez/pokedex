@@ -1,9 +1,9 @@
 {
-  "short_name": "React SSR App",
-  "name": "Create React SSR App Sample",
+  "short_name": "Pokedex app",
+  "name": "Pokedex app to look for poke-info",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.gif",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
