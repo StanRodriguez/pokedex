@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardTitle,
-  CardBody,
-  CardText,
-  CardFooter
-} from "reactstrap";
+import { Card, CardImg, CardTitle, CardBody, CardFooter } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./PokemonCard.css";
 import PokemonDetails from "../PokemonDetails/PokemonDetails";
