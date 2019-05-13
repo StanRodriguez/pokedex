@@ -1,7 +1,8 @@
-#Pokédex
+# Pokédex
+
 This app allows you to look for information of any pokemon using the [PokéAPI](https://pokeapi.co/).
 
-##Features
+## Features
 
 - Server-side rendering (SSR) using [Create React SSR app](https://trustworktech.github.io/create-react-ssr-app/) package.
 - UI designed using [Reactstrap](https://reactstrap.github.io/).
@@ -15,7 +16,8 @@ This app allows you to look for information of any pokemon using the [PokéAPI](
 
 **Note**: to fully see all the features, it's recommended to run a **production build**. (check the **Available Scripts** section for more info).
 
-##How to use it
+## How to use it
+
 On the homepage, use the buttons **Prev** and **Next** to navigate through groups of pokemons. Also, the name or the ID of the pokemon can be typed in the **search box** and then press **enter**. If the pokemon is found, it is showed.
 Press **See details** button to see more information. A modal will pop up and the text-to-speech feature will start reading the pokemon description.
 The following details are available:
