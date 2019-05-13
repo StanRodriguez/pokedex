@@ -10,9 +10,9 @@ This app allows you to look for information of any pokemon using the [PokéAPI](
 - Text-To-Speech capable using [speak-tts](https://www.npmjs.com/package/speak-tts).
 - Searching by name or ID.
 - Navigation in groups (on homepage) or individual (on modal).
-- Pokemon stats using progress bar.
-- Slideshow showing pokemons' different images.
-- URL parameters can be used to access to a particular pokemon with the route `/pokemon/<id>` or `/pokemon/<name>`.
+- Progress bars to display pokemon stats.
+- Slideshow.
+- URL parameters can be used to access a particular pokemon with the route `/pokemon/<id>` or `/pokemon/<name>`.
 
 **Note**: to fully see all the features, it's recommended to run a **production build**. (check the **Available Scripts** section for more info).
 
