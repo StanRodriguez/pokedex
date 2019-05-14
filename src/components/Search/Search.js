@@ -14,7 +14,7 @@ export default function Search({ handleSubmit, handleChange, searchString }) {
       <FormGroup className="m-auto col col-md-8 col-xl-4">
         <InputGroup>
           <Input
-            type="text"
+            type="search"
             name="search"
             placeholder="Search..."
             onChange={e => handleChange(e.target.value)}
