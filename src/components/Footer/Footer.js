@@ -22,7 +22,7 @@ export default function Footer(props) {
             <div className="axis y-axis">
               <div className="up">
                 <span role="img" aria-label="Arrow to the top">
-                  ⬆
+                  🔺
                 </span>
               </div>
             </div>
