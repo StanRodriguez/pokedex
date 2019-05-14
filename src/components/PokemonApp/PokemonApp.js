@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import PokemonList from "../PokemonList/PokemonList";
