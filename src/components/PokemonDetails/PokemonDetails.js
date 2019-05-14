@@ -13,7 +13,6 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import Slideshow from "../Slideshow/Slideshow";
-const Pokedex = require("pokedex-promise-v2");
 
 export default function PokemonDetails({ buttonLabel, pokemon, total }) {
   const speech = new Speech();
@@ -61,7 +60,10 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
     ));
   }
   async function getPokemonDetails() {
-    const P = new Pokedex();
+    const Pokedex = require("pokedex-promise-v2");
+    const P = new Pokedex({
+      protocol: "https"
+    });
     try {
       const pokeSpecies = await P.resource([species.url]);
 

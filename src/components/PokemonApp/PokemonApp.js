@@ -5,7 +5,6 @@ import PokemonList from "../PokemonList/PokemonList";
 import "./PokemonApp.css";
 import Pagination from "../Navigation/Navigation";
 import loadingImage from "../../assets/loading.gif";
-const Pokedex = require("pokedex-promise-v2");
 
 function PokemonApp(props) {
   const [searchString, setSearchString] = useState("");
@@ -19,7 +18,10 @@ function PokemonApp(props) {
 
   async function getPokemons(params = [1, 2, 3, 4, 5, 6]) {
     try {
-      const P = new Pokedex();
+      const Pokedex = require("pokedex-promise-v2");
+      const P = new Pokedex({
+        protocol: "https"
+      });
       const response = await P.getPokemonByName(params);
       const pokemons = response.map(pokemon => ({
         id: pokemon.id,
