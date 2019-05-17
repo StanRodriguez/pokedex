@@ -30,13 +30,25 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
       description => description.language.name === language
     )[0].flavor_text;
   }
+  function extractIdFromSpecies(url) {
+    let id = "";
+    for (let i = url.length - 2; i >= 0; i--) {
+      if (url[i] === "/") break;
 
+      id += url[i];
+    }
+    return id
+      .split("")
+      .reverse()
+      .join("");
+  }
   function getEvolutionChain(evolves_to, cleanedChain = [], count = 1) {
     if (!evolves_to) return cleanedChain;
     else {
       cleanedChain.push({
         name: evolves_to.species.name,
-        url: "/" + evolves_to.species.url[evolves_to.species.url.length - 2]
+        // url: "/" + evolves_to.species.url[evolves_to.species.url.length - 2]
+        url: "/" + extractIdFromSpecies(evolves_to.species.url)
       });
       return getEvolutionChain(
         evolves_to.evolves_to[0],
