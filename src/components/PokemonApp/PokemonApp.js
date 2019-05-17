@@ -53,12 +53,13 @@ function PokemonApp(props) {
       />
       {isLoaded ? (
         <React.Fragment>
-          {pokemons.length > 1 && (
+          {pokemons.length > 0 && (
             <Pagination
               total={pokemons.length}
               first={pokemons[0].id}
               last={pokemons[pokemons.length - 1].id}
               getPokemons={getPokemons}
+              limit={pokemons.length === 1 ? 1 : null}
             />
           )}
           <PokemonList searchString={searchString} pokemons={pokemons} />
