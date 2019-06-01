@@ -14,14 +14,17 @@ export default function Search({ handleSubmit, handleChange, searchString }) {
     <Form onSubmit={handleSubmit} className="m-2">
       <FormGroup className="m-auto col col-md-8 col-xl-4">
         <InputGroup>
-          <Input
+          {/* <Input
             type="search"
             name="search"
             placeholder="Search..."
             onChange={e => handleChange(e.target.value)}
             value={searchString}
+          /> */}
+          <SearchInput
+            handleChange={handleChange}
+            searchString={searchString}
           />
-          <SearchInput />
           <InputGroupAddon addonType="append">
             <Button color="danger">Submit</Button>
           </InputGroupAddon>
