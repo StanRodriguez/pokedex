@@ -8,6 +8,7 @@ import {
   InputGroupAddon
 } from "reactstrap";
 import "./Search.css";
+import SearchInput from "../SearchInput/SearchInput";
 export default function Search({ handleSubmit, handleChange, searchString }) {
   return (
     <Form onSubmit={handleSubmit} className="m-2">
@@ -20,6 +21,7 @@ export default function Search({ handleSubmit, handleChange, searchString }) {
             onChange={e => handleChange(e.target.value)}
             value={searchString}
           />
+          <SearchInput />
           <InputGroupAddon addonType="append">
             <Button color="danger">Submit</Button>
           </InputGroupAddon>
