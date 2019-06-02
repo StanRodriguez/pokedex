@@ -20,6 +20,8 @@ class SearchInput extends React.Component {
 
     return (
       <Select
+        name="search"
+        className="col"
         value={selectedOption}
         onChange={this.handleChange}
         options={options}
