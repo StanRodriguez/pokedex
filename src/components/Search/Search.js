@@ -12,7 +12,7 @@ import SearchInput from "../SearchInput/SearchInput";
 export default function Search({ handleSubmit, handleChange, searchString }) {
   return (
     <Form onSubmit={handleSubmit} className="m-2">
-      <FormGroup className="m-auto col col-md-8 col-lg-6 ">
+      <FormGroup className="m-auto col col-md-8 col-lg-6 col-xl-4">
         <InputGroup>
           {/* <Input
             type="search"
