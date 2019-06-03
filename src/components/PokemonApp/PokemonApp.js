@@ -59,7 +59,7 @@ function PokemonApp(props) {
               first={pokemons[0].id}
               last={pokemons[pokemons.length - 1].id}
               getPokemons={getPokemons}
-              limit={pokemons.length === 1 ? 1 : null}
+              limit={pokemons.length === 1 ? 1 : 6}
             />
           )}
           <PokemonList searchString={searchString} pokemons={pokemons} />

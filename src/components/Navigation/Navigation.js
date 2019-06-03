@@ -25,6 +25,7 @@ export default function Pagination({
         range.push(i);
       }
     }
+
     getPokemons(range);
   }
   function handlePrevious() {
