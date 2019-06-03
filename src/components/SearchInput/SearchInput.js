@@ -12,7 +12,6 @@ class SearchInput extends React.Component {
 
   handleChange = selectedOption => {
     this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
     this.props.handleChange(selectedOption.label);
   };
   render() {
@@ -21,7 +20,7 @@ class SearchInput extends React.Component {
     return (
       <Select
         name="search"
-        className="col"
+        className="m-auto col"
         value={selectedOption}
         onChange={this.handleChange}
         options={options}
