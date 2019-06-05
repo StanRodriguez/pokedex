@@ -36,7 +36,7 @@ At the bottom of the modal, the previous or next pokemon can be accessed using t
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
@@ -55,3 +55,8 @@ It correctly bundles React in production mode (both for the server and the clien
 
 The build is minified and the filenames include the hashes.<br>
 The build can be run using `node build` command.
+
+### `npm start`
+
+Runs previously built app in the `build` folder. <br>
+It is the same as running `node build` command.
