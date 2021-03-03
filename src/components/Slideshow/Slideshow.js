@@ -3,7 +3,7 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselIndicators
+  CarouselIndicators,
 } from "reactstrap";
 import "./Slideshow.css";
 // const items = [

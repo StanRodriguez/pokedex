@@ -9,7 +9,7 @@ import {
   Progress,
   Pagination,
   PaginationItem,
-  PaginationLink
+  PaginationLink,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import Slideshow from "../Slideshow/Slideshow";
@@ -27,7 +27,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
 
   function getDescription(descriptions, language) {
     return descriptions.filter(
-      description => description.language.name === language
+      (description) => description.language.name === language
     )[0].flavor_text;
   }
   function extractIdFromSpecies(url) {
@@ -37,10 +37,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
 
       id += url[i];
     }
-    return id
-      .split("")
-      .reverse()
-      .join("");
+    return id.split("").reverse().join("");
   }
   function getEvolutionChain(evolves_to, cleanedChain = [], count = 1) {
     if (!evolves_to) return cleanedChain;
@@ -48,7 +45,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
       cleanedChain.push({
         name: evolves_to.species.name,
         // url: "/" + evolves_to.species.url[evolves_to.species.url.length - 2]
-        url: "/" + extractIdFromSpecies(evolves_to.species.url)
+        url: "/" + extractIdFromSpecies(evolves_to.species.url),
       });
       return getEvolutionChain(
         evolves_to.evolves_to[0],
@@ -74,19 +71,19 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
   async function getPokemonDetails() {
     const Pokedex = require("pokedex-promise-v2");
     const P = new Pokedex({
-      protocol: "https"
+      protocol: "https",
     });
     try {
       const pokeSpecies = await P.resource([species.url]);
 
       const pokeEvolutionChain = await P.resource([
-        pokeSpecies[0].evolution_chain.url
+        pokeSpecies[0].evolution_chain.url,
       ]);
 
       setDetails({
         description: getDescription(pokeSpecies[0].flavor_text_entries, "en"),
         evolutionChain: getEvolutionChain(pokeEvolutionChain[0].chain),
-        habitat: pokeSpecies[0].habitat ? pokeSpecies[0].habitat.name : "N/A"
+        habitat: pokeSpecies[0].habitat ? pokeSpecies[0].habitat.name : "N/A",
       });
 
       setModal(!modal);
@@ -99,19 +96,19 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
       speech
         .init()
 
-        .catch(e => {
+        .catch((e) => {
           console.error("An error occured while initializing : ", e);
         });
       speech
         .speak({
           queue: false,
-          text
+          text,
         })
         .then(() => {
           console.log("Success !");
           return "";
         })
-        .catch(e => {
+        .catch((e) => {
           console.error("An error occurred trying to speak:", e);
         });
     } catch (error) {
@@ -158,7 +155,7 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
           <div className="col-12 col-lg-6">
             <Slideshow
               items={Object.values(sprites)
-                .filter(item => item !== null)
+                .filter((item) => item !== null && typeof item === "string")
                 .reverse()}
             />
             {modal ? tts(details.description) : speech.cancel()}
