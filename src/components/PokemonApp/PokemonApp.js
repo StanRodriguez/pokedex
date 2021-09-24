@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Header from "../Header/Header";
-import Search from "../Search/Search";
-import PokemonList from "../PokemonList/PokemonList";
+import Header from "./Header/Header";
+import Search from "./Search/Search";
+import PokemonList from "./PokemonList/PokemonList";
 import "./PokemonApp.css";
-import Pagination from "../Navigation/Navigation";
 import loadingImage from "../../assets/loading.gif";
+import Navigation from "./Navigation/Navigation";
+import Footer from "./Footer/Footer";
 
 function PokemonApp(props) {
   const [searchString, setSearchString] = useState("");
@@ -21,15 +22,15 @@ function PokemonApp(props) {
     try {
       const Pokedex = require("pokedex-promise-v2");
       const P = new Pokedex({
-        protocol: "https"
+        protocol: "https",
       });
       const response = await P.getPokemonByName(params);
-      const pokemons = response.map(pokemon => ({
+      const pokemons = response.map((pokemon) => ({
         id: pokemon.id,
         name: pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1),
         sprites: pokemon.sprites,
         species: pokemon.species,
-        stats: pokemon.stats
+        stats: pokemon.stats,
       }));
       setPokemons(pokemons);
       setIsLoaded(true);
@@ -54,7 +55,7 @@ function PokemonApp(props) {
       {isLoaded ? (
         <React.Fragment>
           {pokemons.length > 0 && (
-            <Pagination
+            <Navigation
               total={pokemons.length}
               first={pokemons[0].id}
               last={pokemons[pokemons.length - 1].id}
@@ -63,6 +64,7 @@ function PokemonApp(props) {
             />
           )}
           <PokemonList searchString={searchString} pokemons={pokemons} />
+          <Footer />
         </React.Fragment>
       ) : (
         <img src={loadingImage} alt="Loading" />

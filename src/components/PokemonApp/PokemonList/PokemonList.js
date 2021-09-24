@@ -1,7 +1,6 @@
 import React from "react";
-import PokemonCard from "../PokemonCard/PokemonCard";
+import PokemonCard from "./PokemonCard/PokemonCard";
 import "./PokemonList.css";
-import Footer from "../Footer/Footer";
 export default function PokemonList({ pokemons }) {
   return (
     <React.Fragment>
@@ -14,7 +13,6 @@ export default function PokemonList({ pokemons }) {
           />
         ))}
       </div>
-      <Footer />
     </React.Fragment>
   );
 }

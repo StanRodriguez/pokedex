@@ -12,7 +12,7 @@ import {
   PaginationLink,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import Slideshow from "../Slideshow/Slideshow";
+import Slideshow from "../../../../Slideshow/Slideshow";
 
 export default function PokemonDetails({ buttonLabel, pokemon, total }) {
   const speech = new Speech();

@@ -1,15 +1,14 @@
 import React from "react";
 import { ButtonGroup, Button } from "reactstrap";
 import "./Navigation.css";
-export default function Pagination({
+export default function Navigation({
   first,
   last,
   total,
   getPokemons,
   pokemonsTotal = 807,
-  limit = 6
+  limit = 6,
 }) {
-  // console.log(first, last, total, getPokemons);
   function handleNext() {
     const range = [];
     if (last + limit > pokemonsTotal) {

@@ -1,7 +1,7 @@
 @font-face {
   font-family: "PokemonSolid";
   font-display: auto;
-  src: url(./../../assets/fonts/PokemonSolid.ttf) format("truetype");
+  src: url(./../../../assets/fonts/PokemonSolid.ttf) format("truetype");
 }
 .header-title {
   font-family: "PokemonSolid", Arial, Helvetica, sans-serif;

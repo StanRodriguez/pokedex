@@ -1,16 +1,16 @@
 import React from "react";
 import Select from "react-select";
-import options from "../../data/pokemon.json";
+import options from "../../../../data/pokemon.json";
 
 class SearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: null
+      selectedOption: null,
     };
   }
 
-  handleChange = selectedOption => {
+  handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     this.props.handleChange(selectedOption.label);
   };

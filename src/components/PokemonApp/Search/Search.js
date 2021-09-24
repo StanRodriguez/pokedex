@@ -4,11 +4,11 @@ import {
   Form,
   FormGroup,
   // Input,
-  InputGroup
+  InputGroup,
   // InputGroupAddon
 } from "reactstrap";
 import "./Search.css";
-import SearchInput from "../SearchInput/SearchInput";
+import SearchInput from "./SearchInput/SearchInput";
 export default function Search({ handleSubmit, handleChange, searchString }) {
   return (
     <Form onSubmit={handleSubmit} className="m-2">
