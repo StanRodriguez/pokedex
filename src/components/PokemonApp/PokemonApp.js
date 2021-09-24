@@ -7,9 +7,10 @@ import "./PokemonApp.css";
 import loadingImage from "../../assets/loading.gif";
 import Navigation from "./Navigation/Navigation";
 import Footer from "./Footer/Footer";
+import { useHistory } from "react-router";
 
 function PokemonApp(props) {
-  const [searchString, setSearchString] = useState("");
+  const pushHistory = useHistory().push;
   const [pokemons, setPokemons] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -39,19 +40,12 @@ function PokemonApp(props) {
     }
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (searchString) getPokemons([searchString.toLocaleLowerCase()]);
-  }
+  const handleChange = async (props) => pushHistory(`/pokemon/${props.value}`);
 
   return (
     <main className="container-fluid">
       <Header />
-      <Search
-        handleChange={setSearchString}
-        searchString={searchString}
-        handleSubmit={handleSubmit}
-      />
+      <Search handleChange={handleChange} />
       {isLoaded ? (
         <React.Fragment>
           {pokemons.length > 0 && (
@@ -63,7 +57,7 @@ function PokemonApp(props) {
               limit={pokemons.length === 1 ? 1 : 6}
             />
           )}
-          <PokemonList searchString={searchString} pokemons={pokemons} />
+          <PokemonList pokemons={pokemons} />
           <Footer />
         </React.Fragment>
       ) : (

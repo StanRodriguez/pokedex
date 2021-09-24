@@ -1,6 +1,6 @@
 import React from "react";
+import Select from "react-select";
 import {
-  Button,
   Form,
   FormGroup,
   // Input,
@@ -8,26 +8,20 @@ import {
   // InputGroupAddon
 } from "reactstrap";
 import "./Search.css";
-import SearchInput from "./SearchInput/SearchInput";
-export default function Search({ handleSubmit, handleChange, searchString }) {
+// import SearchInput from "./SearchInput/SearchInput";
+import options from "../../../data/pokemon.json";
+
+export default function Search({ handleChange }) {
   return (
-    <Form onSubmit={handleSubmit} className="m-2">
+    <Form className="m-2">
       <FormGroup className="m-auto col col-md-8 col-lg-6 col-xl-4">
         <InputGroup>
-          {/* <Input
-            type="search"
+          <Select
             name="search"
-            placeholder="Search..."
-            onChange={e => handleChange(e.target.value)}
-            value={searchString}
-          /> */}
-          <SearchInput
-            handleChange={handleChange}
-            searchString={searchString}
+            className="m-auto col"
+            onChange={handleChange}
+            options={options}
           />
-          {/* <InputGroupAddon addonType="append"> */}
-          <Button color="danger">Submit</Button>
-          {/* </InputGroupAddon> */}
         </InputGroup>
       </FormGroup>
     </Form>
