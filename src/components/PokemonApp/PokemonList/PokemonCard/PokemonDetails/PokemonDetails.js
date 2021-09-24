@@ -30,6 +30,8 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
       (description) => description.language.name === language
     )[0].flavor_text;
   }
+
+  // get the specie id from the url
   function extractIdFromSpecies(url) {
     let id = "";
     for (let i = url.length - 2; i >= 0; i--) {
@@ -39,12 +41,13 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
     }
     return id.split("").reverse().join("");
   }
+
+  //use recursion to get deeper in the object to get the whole evolution chain
   function getEvolutionChain(evolves_to, cleanedChain = [], count = 1) {
     if (!evolves_to) return cleanedChain;
     else {
       cleanedChain.push({
         name: evolves_to.species.name,
-        // url: "/" + evolves_to.species.url[evolves_to.species.url.length - 2]
         url: "/" + extractIdFromSpecies(evolves_to.species.url),
       });
       return getEvolutionChain(
@@ -54,6 +57,8 @@ export default function PokemonDetails({ buttonLabel, pokemon, total }) {
       );
     }
   }
+
+  // make links for the evolution chain
   function formatEvolutionChain(evolutionChain) {
     return evolutionChain.map((evo, i, arr) => (
       <span key={evo.url}>
