@@ -14,11 +14,14 @@ function PokemonApp(props) {
   const [pokemons, setPokemons] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
+    // Check if there is an id in the url
+    // if so, it will get info from that id
     props.match.params.id
       ? getPokemons([props.match.params.id])
       : getPokemons();
   }, [props.match.params.id]);
 
+  //get pokemons based on IDs
   async function getPokemons(params = [1, 2, 3, 4, 5, 6]) {
     try {
       const Pokedex = require("pokedex-promise-v2");
@@ -40,6 +43,7 @@ function PokemonApp(props) {
     }
   }
 
+  // change the url with the id to show an specific pokemon
   const handleChange = async (props) => pushHistory(`/pokemon/${props.value}`);
 
   return (
@@ -47,7 +51,7 @@ function PokemonApp(props) {
       <Header />
       <Search handleChange={handleChange} />
       {isLoaded ? (
-        <React.Fragment>
+        <>
           {pokemons.length > 0 && (
             <Navigation
               total={pokemons.length}
@@ -58,10 +62,14 @@ function PokemonApp(props) {
             />
           )}
           <PokemonList pokemons={pokemons} />
-          <Footer />
-        </React.Fragment>
+        </>
       ) : (
-        <img src={loadingImage} alt="Loading" />
+        <>
+          <div className="pikachu-gif">
+            <img src={loadingImage} alt="Loading" />
+          </div>
+          <Footer />
+        </>
       )}
     </main>
   );

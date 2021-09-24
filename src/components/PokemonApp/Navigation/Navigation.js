@@ -9,8 +9,10 @@ export default function Navigation({
   pokemonsTotal = 807,
   limit = 6,
 }) {
+  // next button
   function handleNext() {
     const range = [];
+    //edge case if it's the last one
     if (last + limit > pokemonsTotal) {
       for (let i = last + 1; i <= pokemonsTotal; i++) range.push(i);
 
@@ -21,8 +23,10 @@ export default function Navigation({
 
     getPokemons(range);
   }
+  //previous button
   function handlePrevious() {
     const range = [];
+    //edge case if it's the first one
     if (first - limit <= 1) {
       for (let i = pokemonsTotal - limit; i < pokemonsTotal; i++) {
         range.push(i);

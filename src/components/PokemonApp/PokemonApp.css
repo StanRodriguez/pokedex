@@ -3,4 +3,25 @@
   padding-right: 0px !important;
   min-height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.pikachu-gif {
+  flex: 1 0 auto;
+}
+.pikachu-gif img {
+  display: block;
+  animation-name: walk;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes walk {
+  from {
+    margin: 0 0 0 auto;
+  }
+
+  to {
+    margin: 0 100% 0 auto;
+  }
 }
