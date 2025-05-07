@@ -9,7 +9,7 @@
     "pokedex-promise-v2": "^3.3.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router-dom": "^5.3.0",
+    "react-router-dom": "^7.5.2",
     "react-select": "^3.2.0",
     "react-ssr-scripts": "1.0.7",
     "reactstrap": "^8.10.0",
