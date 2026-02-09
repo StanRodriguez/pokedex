@@ -6,7 +6,7 @@
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
     "history": "^4.10.1",
-    "pokedex-promise-v2": "^3.3.2",
+    "pokedex-promise-v2": "^4.2.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.3.0",
